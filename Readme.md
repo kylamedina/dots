@@ -3,12 +3,16 @@
 ![image](https://i.cloudup.com/RCpB-ASfme.png)
 
 WIP bootstrapping library for osx & ubuntu (and maybe others!)
+
 Forked from:
-	- [Matthew Mueller](https://github.com/MatthewMueller/dots)
+
+* [Matthew Mueller](https://github.com/MatthewMueller/dots)
+
 Other ideas from
-	- [Addy Osmani](https://github.com/addyosmani/dotfiles)
-	- [Paul Irish](https://github.com/paulirish/dotfiles/)
-	- [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/)
+
+* [Addy Osmani](https://github.com/addyosmani/dotfiles)
+* [Paul Irish](https://github.com/paulirish/dotfiles/)
+* [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/)
 
 ## Installation
 

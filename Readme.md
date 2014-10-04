@@ -3,19 +3,19 @@
 ![image](https://i.cloudup.com/RCpB-ASfme.png)
 
 WIP bootstrapping library for osx & ubuntu (and maybe others!)
-Based on:
-	- https://github.com/MatthewMueller/dots
+Forked from:
+	- [Matthew Mueller](https://github.com/MatthewMueller/dots)
 Other ideas from
-	- https://github.com/addyosmani/dotfiles
-	- https://github.com/paulirish/dotfiles/
-	- https://github.com/mathiasbynens/dotfiles/
+	- [Addy Osmani](https://github.com/addyosmani/dotfiles)
+	- [Paul Irish](https://github.com/paulirish/dotfiles/)
+	- [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/)
 
 ## Installation
 
 One-liner:
 
 ```
-(mkdir -p /tmp/dots && cd /tmp/dots && curl -L https://github.com/matthewmueller/dots/archive/master.tar.gz | tar zx --strip 1 && sh ./install.sh)
+(mkdir -p /tmp/dots && cd /tmp/dots && curl -L https://github.com/kylamedina/dots/archive/master.tar.gz | tar zx --strip 1 && sh ./install.sh)
 ```
 
 ## Design
@@ -33,7 +33,7 @@ This library tries to be organized like a node application, while working within
 The OSX build does the following:
 
 - install homebrew
-- installs binaries (graphicsmagick, python, sshfs, ack, git, etc.)
+- installs binaries (graphicsmagick, python, node, git, etc.)
 - sets OSX defaults
 - installs applications via `homebrew-cask` (one-password, sublime-text, virtualbox, nv-alt, iterm2, etc.)
 - sets up the ~/.bash_profile 

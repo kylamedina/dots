@@ -74,23 +74,42 @@ echo ""
 echo "Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-echo ""
-echo "Never go into computer sleep mode"
-systemsetup -setcomputersleep Off > /dev/null
+# echo ""
+# echo "Never go into computer sleep mode"
+# systemsetup -setcomputersleep Off > /dev/null
 
 echo ""
 echo "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 echo ""
-echo "Disable smart quotes and smart dashes as theyâ€™re annoying when typing code"
+echo "Disable smart quotes and smart dashes as they're annoying when typing code"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
+echo ""
+echo "Restart automatically if the computer freezes"
+systemsetup -setrestartfreeze on
+
+echo ""
+echo "Enable access for assistive devices"
+echo -n 'a' | sudo tee /private/var/db/.AccessibilityAPIEnabled > /dev/null 2>&1
+sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
+# TODO: avoid GUI password prompt somehow (http://apple.stackexchange.com/q/60476/4408)
+#sudo osascript -e 'tell application "System Events" to set UI elements enabled to true'
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input
 ###############################################################################
+
+echo ""
+echo "Disable “natural” (Lion-style) scrolling"
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+echo ""
+echo "mute all sounds, incl volume change feedback"
+defaults write "com.apple.sound.beep.feedback" -int 0
+defaults write "com.apple.systemsound" "com.apple.sound.uiaudio.enabled" -int 0
 
 echo ""
 echo "Increasing sound quality for Bluetooth headphones/headsets"
@@ -108,9 +127,9 @@ echo ""
 echo "Setting a blazingly fast keyboard repeat rate (ain't nobody got time fo special chars while coding!)"
 defaults write NSGlobalDomain KeyRepeat -int 0
 
-echo ""
-echo "Disabling auto-correct"
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# echo ""
+# echo "Disabling auto-correct"
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 echo ""
 echo "Setting trackpad & mouse speed to a reasonable number"
@@ -126,9 +145,29 @@ defaults write com.apple.BezelServices kDimTime -int 300
 ###############################################################################
 
 echo ""
-echo "Requiring password immediately after sleep or screen saver begins"
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+echo "Disable the crash reporter"
+#defaults write com.apple.CrashReporter DialogType -string "none"
+
+echo ""
+echo "Disable the “Are you sure you want to open this application?” dialog"
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+echo ""
+echo "Disable opening and closing window animations"
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+echo ""
+echo "Menu bar: disable transparency"
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+
+echo ""
+echo "Disable shadow in screenshots"
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# echo ""
+# echo "Requiring password immediately after sleep or screen saver begins"
+# defaults write com.apple.screensaver askForPassword -int 1
+# defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 echo ""
 echo "Enabling subpixel font rendering on non-Apple LCDs"
@@ -143,8 +182,8 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 
 echo ""
-echo "Showing icons for hard drives, servers, and removable media on the desktop"
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+echo "Hide all icons on the desktop"
+defaults write com.apple.finder CreateDesktop -bool true
 
 echo ""
 echo "Showing all filename extensions in Finder by default"
@@ -171,6 +210,12 @@ echo "Use column view in all Finder windows by default"
 defaults write com.apple.finder FXPreferredViewStyle Clmv
 
 echo ""
+echo "Automatically open a new Finder window when a volume is mounted"
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+echo ""
 echo "Avoiding the creation of .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -186,13 +231,26 @@ echo "Enabling snap-to-grid for icons on the desktop and in other icon views"
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
+echo ""
+echo "Disable the warning before emptying the Trash"
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+echo ""
+echo "Remove Dropbox’s green checkmark icons in Finder"
+file=/Applications/Dropbox.app/Contents/Resources/check.icns
+[ -e "$file" ] && mv -f "$file" "$file.bak"
+unset file
+
+echo ""
+echo "Skip DMG verification"
+defaults write com.apple.frameworks.diskimages skip-verify true
 
 ###############################################################################
 # Dock & Mission Control
 ###############################################################################
 
 # Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you donâ€™t use
+# This is only really useful when setting up a new Mac, or if you don't use
 # the Dock to launch apps.
 #defaults write com.apple.dock persistent-apps -array
 
@@ -217,27 +275,32 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 ###############################################################################
 
 echo ""
-echo "Hiding Safariâ€™s bookmarks bar by default"
+echo "Allow installing user scripts via GitHub or gists"
+defaults write com.google.Chrome ExtensionInstallSources -array "https://*.github.com/*"
+defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://*.github.com/*"
+
+echo ""
+echo "Hiding Safari's bookmarks bar by default"
 defaults write com.apple.Safari ShowFavoritesBar -bool false
 
 echo ""
-echo "Hiding Safariâ€™s sidebar in Top Sites"
+echo "Hiding Safari's sidebar in Top Sites"
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 
 echo ""
-echo "Disabling Safariâ€™s thumbnail cache for History and Top Sites"
+echo "Disabling Safari's thumbnail cache for History and Top Sites"
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
 echo ""
-echo "Enabling Safariâ€™s debug menu"
+echo "Enabling Safari's debug menu"
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
 echo ""
-echo "Making Safariâ€™s search banners default to Contains instead of Starts With"
+echo "Making Safari's search banners default to Contains instead of Starts With"
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
 
 echo ""
-echo "Removing useless icons from Safariâ€™s bookmarks bar"
+echo "Removing useless icons from Safari's bookmarks bar"
 defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 
 echo ""
@@ -253,6 +316,26 @@ defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.Web
 echo ""
 echo "Adding a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+###############################################################################
+# Transmission.app                                                            #
+###############################################################################
+
+echo ""
+echo "Don’t prompt for confirmation before downloading"
+defaults write org.m0k.transmission DownloadAsk -bool false
+
+echo ""
+echo "Trash original torrent files"
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+echo ""
+echo "Hide the donate message"
+defaults write org.m0k.transmission WarningDonate -bool false
+
+echo ""
+echo "Hide the legal disclaimer"
+defaults write org.m0k.transmission WarningLegal -bool false
 
 
 ###############################################################################
@@ -297,7 +380,7 @@ echo "Disable automatic emoji substitution (i.e. use plain text smileys)"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
 echo ""
-echo "Disable smart quotes as itâ€™s annoying for messages that contain code"
+echo "Disable smart quotes as it's annoying for messages that contain code"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 echo ""
@@ -317,11 +400,11 @@ echo "Remove the sleep image file to save disk space"
 sudo rm /Private/var/vm/sleepimage
 echo "Creating a zero-byte file insteadâ€¦"
 sudo touch /Private/var/vm/sleepimage
-echo "â€¦and make sure it canâ€™t be rewritten"
+echo "â€¦and make sure it can't be rewritten"
 sudo chflags uchg /Private/var/vm/sleepimage
 
 echo ""
-echo "Disable the sudden motion sensor as itâ€™s not useful for SSDs"
+echo "Disable the sudden motion sensor as it's not useful for SSDs"
 sudo pmset -a sms 0
 
 echo ""

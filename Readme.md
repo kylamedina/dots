@@ -3,6 +3,12 @@
 ![image](https://i.cloudup.com/RCpB-ASfme.png)
 
 WIP bootstrapping library for osx & ubuntu (and maybe others!)
+Based on:
+	- https://github.com/MatthewMueller/dots
+Other ideas from
+	- https://github.com/addyosmani/dotfiles
+	- https://github.com/paulirish/dotfiles/
+	- https://github.com/mathiasbynens/dotfiles/
 
 ## Installation
 

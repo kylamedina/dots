@@ -17,6 +17,10 @@ echo "This script will make your Mac awesome"
 ###############################################################################
 
 echo ""
+echo "Show the Library folder"
+chflags nohidden ~/Library/
+
+echo ""
 echo "Hide the Time Machine, Volume, User, and Bluetooth icons"
 for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
   defaults write "${domain}" dontAutoLoad -array \
@@ -125,7 +129,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 echo ""
 echo "Setting a blazingly fast keyboard repeat rate (ain't nobody got time fo special chars while coding!)"
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 3
 
 # echo ""
 # echo "Disabling auto-correct"
@@ -134,7 +138,7 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 echo ""
 echo "Setting trackpad & mouse speed to a reasonable number"
 defaults write -g com.apple.trackpad.scaling 2
-defaults write -g com.apple.mouse.scaling 2.5
+# defaults write -g com.apple.mouse.scaling 2.5
 
 echo ""
 echo "Turn off keyboard illumination when computer is not used for 5 minutes"
@@ -156,9 +160,9 @@ echo ""
 echo "Disable opening and closing window animations"
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
-echo ""
-echo "Menu bar: disable transparency"
-defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+# echo ""
+# echo "Menu bar: disable transparency"
+# defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
 echo ""
 echo "Disable shadow in screenshots"
@@ -267,7 +271,7 @@ echo ""
 echo "Setting Dock to auto-hide and removing the auto-hiding delay"
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0.7
 
 
 ###############################################################################

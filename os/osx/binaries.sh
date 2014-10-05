@@ -34,9 +34,10 @@ binaries=(
   git
   hub
   legit
-  lolcat
-  rvm
-  ruby
+  rbenv
+  ruby-build
+  cowsay
+  fortune
 )
 
 # Install the binaries

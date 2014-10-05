@@ -18,7 +18,6 @@ apps=(
 	qlcolorcode
 	opera-next
 	evernote-beta
-	fantastical
 	mou
 	teamviewer
 	taskpaper
@@ -42,7 +41,6 @@ apps=(
 	rescuetime
 	namechanger
 	cakebrew
-	totalfinder
 	mamp
 	dash-beta
 	fontprep
@@ -61,6 +59,8 @@ fonts=(
 	font-m-plus
 	font-clear-sans
 	font-roboto
+	font-source-code-pro
+	font-inconsolata
 )
 
 # Specify the location of the apps

@@ -40,10 +40,9 @@ apps=(
 	transmission
 	rescuetime
 	namechanger
-	cakebrew
+	cakebrewboo
 	mamp
-	dash-beta
-	fontprep
+	dash
 	the-unarchiver
 	feeds
 	daisydisk
@@ -52,7 +51,7 @@ apps=(
 	droplr
 	airfoil
 )
-
+# I wish for fontprep, reeder, avocode, degrees
 
 # fonts
 fonts=(

@@ -12,7 +12,6 @@ apps=(
 	google-chrome-canary
 	firefox
 	firefox-nightly
-	webkit-nightly
 	breach
 	torbrowser
 	qlcolorcode

@@ -1,7 +1,7 @@
 
 # paths
 dirname=$(dirname $0)
-lib="/usr/local/lib"
+lib="/usr/local/lib/dots"
 bin="/usr/local/bin"
 
 # make in case they aren't already there
@@ -13,13 +13,13 @@ sudo cp -R $dirname "$lib/"
 
 # remove existing bin if it exists
 if [ -e "$bin/dots" ]; then
-  rm "$bin/dots"
+	rm "$bin/dots"
 fi
 
 # symlink dots
-ln -s "$lib/dots/dots.sh" "$bin/dots"
+ln -s "$lib/dots.sh" "$bin/dots"
 
 # Ubuntu-only: Change from dash to bash
 if [ "$BASH_VERSION" = '' ]; then
-  sudo echo "dash    dash/sh boolean false" | debconf-set-selections ; dpkg-reconfigure --frontend=noninteractive dash
+	sudo echo "dash    dash/sh boolean false" | debconf-set-selections ; dpkg-reconfigure --frontend=noninteractive dash
 fi

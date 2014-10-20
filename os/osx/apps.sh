@@ -42,7 +42,6 @@ apps=(
 	namechanger
 	cakebrewboo
 	mamp
-	dash
 	the-unarchiver
 	feeds
 	daisydisk
@@ -50,6 +49,7 @@ apps=(
 	framer-studio
 	droplr
 	airfoil
+	mysqlworkbench
 )
 # I wish for fontprep, reeder, avocode, degrees
 
@@ -112,6 +112,10 @@ alfred() {
 }
 
 cleanup() {
+	rm -rf ~/.atom
+	ln -s ~/Dropbox/Apps/Atom ~/.atom
+	rm -rf /Users/Kyla/Library/Application\ Support/Sublime\ Text\ 3
+	ln -s /Users/Kyla/Dropbox\ \(Personal\)/Apps/Sublime /Users/Kyla/Library/Application\ Support/Sublime\ Text\ 3
 	brew cleanup
 }
 

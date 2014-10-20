@@ -129,7 +129,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 echo ""
 echo "Setting a blazingly fast keyboard repeat rate (ain't nobody got time fo special chars while coding!)"
-defaults write NSGlobalDomain KeyRepeat -int 3
+defaults write NSGlobalDomain KeyRepeat -int 2
 
 # echo ""
 # echo "Disabling auto-correct"
@@ -138,11 +138,11 @@ defaults write NSGlobalDomain KeyRepeat -int 3
 echo ""
 echo "Setting trackpad & mouse speed to a reasonable number"
 defaults write -g com.apple.trackpad.scaling 2
-# defaults write -g com.apple.mouse.scaling 2.5
 
 echo ""
 echo "Turn off keyboard illumination when computer is not used for 5 minutes"
 defaults write com.apple.BezelServices kDimTime -int 300
+
 
 ###############################################################################
 # Screen
@@ -187,7 +187,7 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 
 echo ""
 echo "Hide all icons on the desktop"
-defaults write com.apple.finder CreateDesktop -bool true
+defaults write com.apple.finder CreateDesktop -bool false
 
 echo ""
 echo "Showing all filename extensions in Finder by default"
@@ -201,9 +201,9 @@ echo ""
 echo "Allowing text selection in Quick Look/Preview in Finder by default"
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# echo ""
-# echo "Displaying full POSIX path as Finder window title"
-# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+echo ""
+echo "Displaying full POSIX path as Finder window title"
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
 
 echo ""
 echo "Disabling the warning when changing a file extension"

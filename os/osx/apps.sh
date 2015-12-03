@@ -6,51 +6,7 @@ set -e
 
 # Apps
 apps=(
-	alfred
-	dropbox
-	google-chrome
-	google-chrome-canary
-	firefox
-	firefox-nightly
-	breach
-	torbrowser
-	qlcolorcode
-	opera-next
-	evernote-beta
-	mou
-	teamviewer
-	taskpaper
-	hazel
-	qlmarkdown
-	spotify
-	vagrant
-	flash
-	iterm2
-	sublime-text3
-	atom
-	flux
-	inky
-	qlstephen
-	tower
-	vlc
-	nvalt
-	quicklook-json
-	skype
-	transmission
-	rescuetime
-	namechanger
-	cakebrewboo
-	mamp
-	the-unarchiver
-	feeds
-	daisydisk
-	onepassword
-	framer-studio
-	droplr
-	airfoil
-	mysqlworkbench
 )
-# I wish for fontprep, reeder, avocode, degrees
 
 # fonts
 fonts=(

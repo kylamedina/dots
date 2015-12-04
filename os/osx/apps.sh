@@ -15,6 +15,7 @@ fonts=(
 	font-roboto
 	font-source-code-pro
 	font-inconsolata
+	font-fira-code
 )
 
 # Specify the location of the apps

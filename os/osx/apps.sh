@@ -76,6 +76,7 @@ cleanup() {
 	cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 	rm -r User
 	ln -s ~/Dropbox/Sublime/User
+	ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/Sites/dot-settings/bin/subl
 	xcode-select --install
 }
 

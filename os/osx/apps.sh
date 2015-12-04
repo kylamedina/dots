@@ -68,12 +68,15 @@ alfred() {
 }
 
 cleanup() {
-	brew install cowsay fortune graphicsmagick hub legit mysql node python rbenv
+	brew install cowsay fortune graphicsmagick hub legit mysql node python rbenv libiconv
 	brew cleanup
 	legit install
+	brew link openssl --force
+	brew link libiconv --force
 	cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 	rm -r User
 	ln -s ~/Dropbox/Sublime/User
+	xcode-select --install
 }
 
 main "$@"

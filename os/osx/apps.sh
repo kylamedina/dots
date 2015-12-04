@@ -67,11 +67,12 @@ alfred() {
 }
 
 cleanup() {
-	rm -rf ~/.atom
-	ln -s ~/Dropbox/Apps/Atom ~/.atom
-	rm -rf /Users/Kyla/Library/Application\ Support/Sublime\ Text\ 3
-	ln -s /Users/Kyla/Dropbox\ \(Personal\)/Apps/Sublime /Users/Kyla/Library/Application\ Support/Sublime\ Text\ 3
+	brew install cowsay fortune graphicsmagick hub legit mysql node python rbenv
 	brew cleanup
+	legit install
+	cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
+	rm -r User
+	ln -s ~/Dropbox/Sublime/User
 }
 
 main "$@"

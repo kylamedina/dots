@@ -190,8 +190,9 @@ echo "Hide all icons on the desktop"
 defaults write com.apple.finder CreateDesktop -bool false
 
 echo ""
-echo "Showing all filename extensions in Finder by default"
+echo "Showing all files and filename extensions in Finder by default"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder AppleShowAllFiles YES
 
 echo ""
 echo "Showing status bar in Finder by default"
@@ -283,13 +284,6 @@ echo "Allow installing user scripts via GitHub or gists"
 defaults write com.google.Chrome ExtensionInstallSources -array "https://*.github.com/*"
 defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://*.github.com/*"
 
-echo ""
-echo "Hiding Safari's bookmarks bar by default"
-defaults write com.apple.Safari ShowFavoritesBar -bool false
-
-echo ""
-echo "Hiding Safari's sidebar in Top Sites"
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 
 echo ""
 echo "Disabling Safari's thumbnail cache for History and Top Sites"

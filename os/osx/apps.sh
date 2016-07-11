@@ -34,14 +34,13 @@ main() {
 
 	# Install homebrew-cask
 	echo "installing cask..."
-	brew tap phinze/homebrew-cask
-	brew install brew-cask
+	bbrew tap caskroom/cask
 
 	# Tap alternative versions
 	brew tap caskroom/versions
 
 	# Tap the fonts
-	brew tap caskroom/fonts
+	#brew tap caskroom/fonts
 
 	# install apps
 	echo "installing apps..."

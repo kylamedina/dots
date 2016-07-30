@@ -15,6 +15,8 @@ apps=(
 	slack
 	dropbox
 	plug
+	iterm2
+	alfred
 )
 
 # fonts

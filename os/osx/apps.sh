@@ -17,6 +17,7 @@ apps=(
 	plug
 	iterm2
 	alfred
+	totalfinder
 )
 
 # fonts

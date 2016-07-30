@@ -43,10 +43,10 @@ main() {
 
 	# Ensure homebrew is installed
 	homebrew
-
+	brew tap caskroom/fonts 
 	# Install homebrew-cask
 	echo "installing cask..."
-	bbrew tap caskroom/cask
+	brew tap caskroom/cask
 
 	# Tap alternative versions
 	brew tap caskroom/versions

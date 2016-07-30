@@ -6,6 +6,15 @@ set -e
 
 # Apps
 apps=(
+	google-chrome
+	google-drive
+	1password
+	daisydisk
+	sketch
+	sketch-toolbox
+	slack
+	dropbox
+	plug
 )
 
 # fonts

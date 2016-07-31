@@ -19,6 +19,7 @@ apps=(
 	totalfinder
 	padbury-clock
 	polymail
+	rightfont
 )
 
 # fonts

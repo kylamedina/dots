@@ -17,6 +17,8 @@ apps=(
 	iterm2
 	alfred
 	totalfinder
+	padbury-clock
+	polymail
 )
 
 # fonts

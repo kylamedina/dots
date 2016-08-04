@@ -82,7 +82,7 @@ alfred() {
 }
 
 cleanup() {
-	brew install cowsay fortune graphicsmagick hub legit mysql node python rbenv libiconv
+	brew install cowsay fortune graphicsmagick hub legit mysql node python rbenv
 	brew cleanup
 	legit install
 	brew link openssl --force

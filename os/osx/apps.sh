@@ -20,6 +20,7 @@ apps=(
 	padbury-clock
 	polymail
 	rightfont
+	sublime-text
 )
 
 # fonts
